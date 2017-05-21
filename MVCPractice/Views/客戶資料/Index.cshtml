@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-offset-4">
             @Html.Editor("type","客戶分類")
-            @Html.TextBox("txtKeyword", "", new {type="search", placeholder = "請輸入關鍵字"
+            @Html.TextBox("keyword", "", new {type="search", placeholder = "請輸入關鍵字"
                 ,@class="form-control text" })
             <input type="submit" class="btn btn-primary" value="Search">
             <span></span>
@@ -24,13 +24,19 @@
 <table class="table">
     <tr>
         <th>
+            <a href="?sort=客戶名稱">▲</a>
             @Html.DisplayNameFor(model => model.客戶名稱)
+            <a href="?sort=客戶名稱&desc=true">▼</a>
         </th>
         <th>
+            <a href="?sort=統一編號">▲</a>
             @Html.DisplayNameFor(model => model.統一編號)
+            <a href="?sort=統一編號&desc=true">▼</a>
         </th>
         <th>
+            <a href="?sort=電話">▲</a>
             @Html.DisplayNameFor(model => model.電話)
+            <a href="?sort=電話&desc=true">▼</a>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.傳真)
@@ -39,6 +45,7 @@
             @Html.DisplayNameFor(model => model.地址)
         </th>
         <th>
+
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>

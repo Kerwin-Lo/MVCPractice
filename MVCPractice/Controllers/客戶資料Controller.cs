@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVCPractice.Models;
 using System.Web.Security;
+using MVCPractice.Models.ViewModels;
 
 namespace MVCPractice.Controllers
 {
@@ -29,10 +30,44 @@ namespace MVCPractice.Controllers
 
         // GET: 客戶資料
         [宣告客戶分類的SelectList物件Attribute]
-        public ActionResult Index(string txtKeyword="",string type="")
+        public ActionResult Index(客戶資料篩選條件ViewModel filter,string sort,bool desc=false)
         {
              
-            var data=repo.Get客戶資料(txtKeyword, type);
+            var data=repo.Get客戶資料(filter);
+            switch (sort)
+            {
+                case"客戶名稱":
+                    if (desc)
+                    {
+                        data = data.OrderByDescending(c => c.客戶名稱);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(c => c.客戶名稱);
+                    }
+                    break;
+                case "統一編號":
+                    if (desc)
+                    {
+                        data = data.OrderByDescending(c => c.統一編號);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(c => c.統一編號);
+                    }
+                    break;
+                case "電話":
+                    if (desc)
+                    {
+                        data = data.OrderByDescending(c => c.電話);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(c => c.電話);
+                    }
+                    break;
+            }
+              
             return View(data.ToList());
         }
 
