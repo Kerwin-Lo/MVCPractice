@@ -31,6 +31,7 @@ namespace MVCPractice.Controllers
         [宣告客戶分類的SelectList物件Attribute]
         public ActionResult Index(string txtKeyword="",string type="")
         {
+             
             var data=repo.Get客戶資料(txtKeyword, type);
             return View(data.ToList());
         }
